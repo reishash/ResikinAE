@@ -76,5 +76,8 @@ public class Jadwal {
         this.latitude = latitude;
     }
 
+    // tampilkanJadwal() ditaruh di controller aja
+    // aturJadwal(tanggal : LocalDate, jam : LocalTime, alamat : String, pusat : String, altitude : double, latitude : double) ini masih bingung(?)
+    //kirimNotifikasi() harusnya dihapus
 }
 
