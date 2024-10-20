@@ -1,5 +1,4 @@
 package src.main.java.com.models;
-
 public class Lokasi {
     private int idLokasi;
     private String namaLokasi;
