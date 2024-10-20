@@ -2,8 +2,8 @@ package src.main.java.com.models;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Register {
-
+public class RegisterLogin {
+    private User dataUser;
     // Metode untuk proses registrasi
     public User register() {
     try (Scanner inp = new Scanner(System.in)){
@@ -40,5 +40,22 @@ public class Register {
 
         // Simpan user yang sudah diregistrasi
         return new User(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
-    }}
+        }
+    }
+
+//     public User login() {
+//         Scanner scanner = new Scanner(System.in);
+
+//         // Input untuk login
+//         System.out.println("Login Pengguna:");
+//         System.out.print("Nama Lengkap: ");
+//         String  = scanner.nextLine();
+
+//         // Cek nama lengkap
+//         if (registeredUser.getFullName().equals(inputFullName)) {
+//             System.out.println("Login berhasil! Selamat datang, " + registeredUser.getFullName());
+//         } else {
+//             System.out.println("Nama lengkap salah! Login gagal.");
+//         }
+//     }
 }
