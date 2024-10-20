@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class RegisterLogin {
-    private User dataUser;
+    // private User dataUser;
     // Metode untuk proses registrasi
     public User register() {
     try (Scanner inp = new Scanner(System.in)){
