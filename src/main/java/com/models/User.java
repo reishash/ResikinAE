@@ -1,46 +1,52 @@
 package src.main.java.com.models;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
+import java.time.LocalDate;
 
 public class User {
-    private String fullName;
-    private String birthDate;
-    private String motherName;
+    private String namaLengkap;
+    private LocalDate tglLahir;
+    private String namaIbu;
     private String username;
     private String password;
+    private String roleUser;
 
     // Constructor
-    public User(String fullName, String birthDate, String motherName, String username, String password) {
-        this.fullName = fullName;
-        this.birthDate = birthDate;
-        this.motherName = motherName;
+    public User(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String password, String roleUser) {
+        this.namaLengkap = namaLengkap;
+        this.tglLahir = tglLahir;
+        this.namaIbu = namaIbu;
         this.username = username;
         this.password = password;
+        this.roleUser = roleUser;
+    
     }
 
-    // Getter dan Setter untuk fullName
-    public String getFullName() {
-        return fullName;
+    // Getter dan Setter untuk namaLengkap
+    public String getnamaLengkap() {
+        return namaLengkap;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setnamaLengkap(String namaLengkap) {
+        this.namaLengkap = namaLengkap;
     }
 
-    // Getter dan Setter untuk birthDate
-    public String getBirthDate() {
-        return birthDate;
+    // Getter dan Setter untuk tglLahir
+    public LocalDate gettglLahir() {
+        return tglLahir;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void settglLahir(LocalDate tglLahir) {
+        this.tglLahir = tglLahir;
     }
 
-    // Getter dan Setter untuk motherName
-    public String getMotherName() {
-        return motherName;
+    // Getter dan Setter untuk namaIbu
+    public String getnamaIbu() {
+        return namaIbu;
     }
 
-    public void setMotherName(String motherName) {
-        this.motherName = motherName;
+    public void setnamaIbu(String namaIbu) {
+        this.namaIbu = namaIbu;
     }
 
     // Getter dan Setter untuk username
@@ -61,4 +67,22 @@ public class User {
         this.password = password;
     }
 
-}
+    public String getRoleUser(){
+        JRadioButton MasyarakatButton = new JRadioButton("Masyarakat Umum");
+        JRadioButton PengelolaButton = new JRadioButton("Pengelola Sampah");
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(MasyarakatButton);
+        group.add(PengelolaButton);
+
+        roleUser = "";
+        if (MasyarakatButton.isSelected()) {
+            roleUser = "Masyarakat";
+        } else if (PengelolaButton.isSelected()) {
+            roleUser = "Pengelola Sampah";
+        }
+        return roleUser;
+    }
+    public void setRoleUser(String roleUser) {
+        this.roleUser = roleUser;
+    }}
