@@ -1,5 +1,5 @@
 package src.main.java.com.controllers;
 
-public class RegisterController {
-
+public class TipsController {
+    
 }
