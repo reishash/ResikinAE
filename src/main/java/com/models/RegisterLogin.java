@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 public class RegisterLogin {
     private User dataUser;
+    // Metode untuk menyimpan data user setelah registrasi
+    public void setUserData(User user) {
+        this.dataUser = user;
+    }
+    public User getUserData() {
+        return this.dataUser;
+    }
     // Metode untuk proses registrasi
     public User register() {
     try (Scanner inp = new Scanner(System.in)){
