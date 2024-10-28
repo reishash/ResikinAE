@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class RegisterLogin {
-    // private User dataUser;
+    private User dataUser;
     // Metode untuk proses registrasi
     public User register() {
     try (Scanner inp = new Scanner(System.in)){
@@ -39,23 +39,59 @@ public class RegisterLogin {
         }
 
         // Simpan user yang sudah diregistrasi
-        return new User(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
+        dataUser = new User(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
+            System.out.println("Registrasi berhasil! Selamat, " + dataUser.getnamaLengkap());
+            return dataUser;
         }
     }
 
-//     public User login() {
-//         Scanner scanner = new Scanner(System.in);
+    public void login() {
+    try (Scanner inp = new Scanner(System.in)){
+        System.out.println("Login Pengguna:");
 
-//         // Input untuk login
-//         System.out.println("Login Pengguna:");
-//         System.out.print("Nama Lengkap: ");
-//         String  = scanner.nextLine();
+        System.out.print("Username: ");
+        String usn = inp.nextLine();
 
-//         // Cek nama lengkap
-//         if (registeredUser.getFullName().equals(inputFullName)) {
-//             System.out.println("Login berhasil! Selamat datang, " + registeredUser.getFullName());
-//         } else {
-//             System.out.println("Nama lengkap salah! Login gagal.");
-//         }
-//     }
+        System.out.print("Password: ");
+        String pw = inp.nextLine();
+
+        // Cek username dan password
+        if (dataUser != null && dataUser.getUsername().equals(usn) && dataUser.getPassword().equals(pw)) {
+            System.out.println("Login berhasil! Selamat datang kembali " + dataUser.getnamaLengkap());
+        } else {
+            System.out.println("Username atau password salah!");
+            System.out.print("Apakah Anda lupa password? (y/n): ");
+            String choice = inp.nextLine();
+            if (choice.equalsIgnoreCase("y")) {
+                lupaPassword();
+            }
+        }
+        }
+    }
+    private void lupaPassword() {
+        try(Scanner inp = new Scanner(System.in)){
+
+        System.out.println("Verifikasi Lupa Password:");
+        System.out.print("Nama Lengkap: ");
+        String nmL = inp.nextLine();
+
+        System.out.print("Tanggal Lahir (yyyy-mm-dd): ");
+        String tglLhr = inp.nextLine();
+        LocalDate tglLahirCheck = LocalDate.parse(tglLhr);  // Parsing tanggal
+
+        System.out.print("Nama Ibu: ");
+        String nmI = inp.nextLine();
+
+        // Cek data pribadi
+        if (dataUser.getnamaLengkap().equals(nmL) && 
+            dataUser.gettglLahir().equals(tglLahirCheck) && 
+            dataUser.getnamaIbu().equals(nmI)) {
+            // Jika cocok, tampilkan password
+            System.out.println("Password Anda adalah: " + dataUser.getPassword());
+            System.out.println("Login berhasil! Selamat datang kembali " + dataUser.getnamaLengkap());
+        } else {
+            System.out.println("Verifikasi akun gagal. Data pribadi tidak cocok.");
+        }
+        }
+    }
 }
