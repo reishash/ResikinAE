@@ -21,6 +21,10 @@ public class HalamanRegisterUI extends JFrame {
     private JButton registerButton;
     private RegisterLogin registerLogin;
 
+    public HalamanRegisterUI() {
+        FormRegist();
+    }
+
     public void FormRegist() {
         setTitle("Form Registrasi");
         setSize(300, 400);
@@ -101,7 +105,7 @@ public class HalamanRegisterUI extends JFrame {
 
         // Simpan ke RegisterLogin model
         registerLogin.setUserData(newUser);
-        
+
         JOptionPane.showMessageDialog(this, "Registrasi berhasil! Selamat, " + newUser.getnamaLengkap());
         // Lanjutkan proses penyimpanan data pengguna ke sistem
     }
