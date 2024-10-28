@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class HalamanLoginUI {
-    private RegisterLogin registerLogin;
+    public RegisterLogin registerLogin;
     
     public HalamanLoginUI (RegisterLogin registerLogin) {
         this.registerLogin = registerLogin;

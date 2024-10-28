@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
 public class LupaPasswordUI {
-    private RegisterLogin registerLogin;
+    public RegisterLogin registerLogin;
 
     public LupaPasswordUI (RegisterLogin registerLogin) {
         this.registerLogin = registerLogin;
