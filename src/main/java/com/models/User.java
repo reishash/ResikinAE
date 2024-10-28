@@ -1,6 +1,4 @@
 package src.main.java.com.models;
-import javax.swing.ButtonGroup;
-import javax.swing.JRadioButton;
 import java.time.LocalDate;
 
 public class User {
@@ -68,21 +66,9 @@ public class User {
     }
 
     public String getRoleUser(){
-        JRadioButton MasyarakatButton = new JRadioButton("Masyarakat Umum");
-        JRadioButton PengelolaButton = new JRadioButton("Pengelola Sampah");
-
-        ButtonGroup group = new ButtonGroup();
-        group.add(MasyarakatButton);
-        group.add(PengelolaButton);
-
-        roleUser = "";
-        if (MasyarakatButton.isSelected()) {
-            roleUser = "Masyarakat";
-        } else if (PengelolaButton.isSelected()) {
-            roleUser = "Pengelola Sampah";
-        }
         return roleUser;
     }
     public void setRoleUser(String roleUser) {
         this.roleUser = roleUser;
-    }}
+    }
+}
