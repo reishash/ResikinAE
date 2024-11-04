@@ -1,61 +1,37 @@
 package src.main.java.com.models;
 import java.time.LocalDate;
-import java.util.Scanner;
+import src.main.java.com.ui.LupaPasswordUI;
 
 public class RegisterLogin {
-    // private User dataUser;
-    // Metode untuk proses registrasi
-    public User register() {
-    try (Scanner inp = new Scanner(System.in)){
-
-        // Menerima input dari user
-        System.out.println("Registrasi Pengguna Baru:");
-        System.out.print("Nama Lengkap: ");
-        String namaLengkap = inp.nextLine();
-
-        System.out.print("Tanggal Lahir (yyyy-mm-dd): ");
-        String tglLahirInput = inp.nextLine();
-        LocalDate tglLahir = LocalDate.parse(tglLahirInput);  // Parsing tanggal
-
-        System.out.print("Nama Ibu: ");
-        String namaIbu = inp.nextLine();
-
-        System.out.print("Username: ");
-        String username = inp.nextLine();
-
-        System.out.print("Password: ");
-        String password = inp.nextLine();
-
-        System.out.print("Konfirmasi Password: ");
-        String konfirmasiPw = inp.nextLine();
-
-        System.out.print("Role (Masyarakat/Pengelola): ");
-        String roleUser = inp.nextLine();
-
-        // Cek apakah password dan konfirmasi password sama
-        if (!password.equals(konfirmasiPw)) {
-            System.out.println("Password tidak cocok! Registrasi gagal.");
-            return null;
-        }
-
-        // Simpan user yang sudah diregistrasi
-        return new User(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
-        }
+    private User dataUser;
+    public void setUserData(User user) {
+        this.dataUser = user;
+    }
+    public User getUserData() {
+        return this.dataUser;
     }
 
-//     public User login() {
-//         Scanner scanner = new Scanner(System.in);
+    public void login(String usn, String pw) {
+        // Cek username dan password
+        if (dataUser != null && dataUser.getUsername().equals(usn) && dataUser.getPassword().equals(pw)) {
+            System.out.println("Login berhasil! Selamat datang kembali " + dataUser.getnamaLengkap());
+        } else {
+            System.out.println("Username atau password salah!");
+            //panggil GUI lupa password
+            new LupaPasswordUI(this); //buka GUI lupapassword
+        }
+    }
+    public void lupaPassword (String nmL, LocalDate tglLahirCheck, String nmI) {
 
-//         // Input untuk login
-//         System.out.println("Login Pengguna:");
-//         System.out.print("Nama Lengkap: ");
-//         String  = scanner.nextLine();
-
-//         // Cek nama lengkap
-//         if (registeredUser.getFullName().equals(inputFullName)) {
-//             System.out.println("Login berhasil! Selamat datang, " + registeredUser.getFullName());
-//         } else {
-//             System.out.println("Nama lengkap salah! Login gagal.");
-//         }
-//     }
+        // Cek data pribadi
+        if (dataUser.getnamaLengkap().equals(nmL) && 
+            dataUser.gettglLahir().equals(tglLahirCheck) && 
+            dataUser.getnamaIbu().equals(nmI)) {
+            // Jika cocok, tampilkan password
+            System.out.println("Password Anda adalah: " + dataUser.getPassword());
+            System.out.println("Login berhasil! Selamat datang kembali " + dataUser.getnamaLengkap());
+        } else {
+            System.out.println("Verifikasi akun gagal. Data pribadi tidak cocok.");
+        }
+    }
 }
