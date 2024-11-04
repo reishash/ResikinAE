@@ -15,7 +15,7 @@ public class FormPencarian {
     }
 
     public void tampilkan() {
-        JFrame frame = new JFrame("Form Pencarian");
+        JFrame frame = new JFrame("Form Pencarian Jadwal");
         frame.setSize(400, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
@@ -33,12 +33,22 @@ public class FormPencarian {
         buttonCari.addActionListener(e -> {
             String lokasi = fieldLokasi.getText();
             List<Jadwal> jadwalList = jadwalController.cariJadwal(lokasi);
-            if (jadwalList != null) {
-                dialogUI.tampilkanPesan("Jumlah jadwal: " + jadwalList.size());
+            if (jadwalList != null && !jadwalList.isEmpty()) {
+                displayJadwal(jadwalList);
+            } else {
+                dialogUI.show("Lokasi tidak terdeteksi");
             }
         });
         frame.add(buttonCari);
 
         frame.setVisible(true);
+    }
+
+    public void displayJadwal(List<Jadwal> jadwalList) {
+        StringBuilder sb = new StringBuilder("Daftar Jadwal:\n");
+        for (Jadwal jadwal : jadwalList) {
+            sb.append(jadwal.toString()).append("\n");
+        }
+        dialogUI.show(sb.toString());
     }
 }

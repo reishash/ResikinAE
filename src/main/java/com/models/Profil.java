@@ -72,4 +72,6 @@ public class Profil {
     public void setStatistik_kontribusi(String statistik_kontribusi) {
         this.statistik_kontribusi = statistik_kontribusi;
     }
+
+    
 }

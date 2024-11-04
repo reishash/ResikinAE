@@ -14,9 +14,9 @@ public class HalamanEditProfil extends JFrame {
     public HalamanEditProfil(ProfilController controller) {
         this.controller = controller;
         Profil profil = controller.getProfil();
-        txtNama.setText(profil.getNama());
+        txtNama.setText(profil.getNama_lengkap());
         txtEmail.setText(profil.getEmail());
-        txtNomor.setText(profil.getNomor());
+        txtNomor.setText(profil.getNomor_telepon());
         txtAlamat.setText(profil.getAlamat());
         this.controller = controller;
         setTitle("Edit Profil");
