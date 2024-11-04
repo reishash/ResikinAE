@@ -13,6 +13,12 @@ public class HalamanEditProfil extends JFrame {
 
     public HalamanEditProfil(ProfilController controller) {
         this.controller = controller;
+        Profil profil = controller.getProfil();
+        txtNama.setText(profil.getNama());
+        txtEmail.setText(profil.getEmail());
+        txtNomor.setText(profil.getNomor());
+        txtAlamat.setText(profil.getAlamat());
+        this.controller = controller;
         setTitle("Edit Profil");
         setSize(400, 300);
         setLayout(new GridLayout(5, 2));

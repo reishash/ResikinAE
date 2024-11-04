@@ -15,7 +15,7 @@ public class HalamanArtikelTips {
         if (artikelSaatIni != null) {
             tampilkanArtikel();
         } else {
-            DialogUI.showMessage("Artikel tidak dapat diakses");
+            new DialogUI().showMessage("Artikel tidak dapat diakses");
         }
     }
 
@@ -34,7 +34,7 @@ public class HalamanArtikelTips {
 
     private void simpanSebagaiFavorit() {
         tipsController.simpanFavorit(artikelSaatIni);
-        DialogUI.showMessage("Artikel berhasil disimpan sebagai favorit.");
+        new DialogUI().showMessage("Artikel berhasil disimpan sebagai favorit.");
     }
 }
 

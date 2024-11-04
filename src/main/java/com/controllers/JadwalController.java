@@ -23,4 +23,16 @@ public class JadwalController {
             return null;
         }
     }
+
+    public void tampilkan() {
+        // Implementasi tampilan jadwal
+    }
+
+    public void selectJadwal(Jadwal jadwal) {
+        // Implementasi pemilihan jadwal
+    }
+
+    public void displayJadwal() {
+        // Implementasi menampilkan jadwal
+    }
 }

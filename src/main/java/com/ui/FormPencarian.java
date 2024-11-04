@@ -15,22 +15,30 @@ public class FormPencarian {
     }
 
     public void tampilkan() {
-        String lokasi = JOptionPane.showInputDialog("Masukkan Lokasi:");
-        if (lokasi != null && !lokasi.isEmpty()) {
+        JFrame frame = new JFrame("Form Pencarian");
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+
+        JLabel labelLokasi = new JLabel("Lokasi");
+        labelLokasi.setBounds(20, 20, 100, 20); 
+        frame.add(labelLokasi);
+
+        JTextField fieldLokasi = new JTextField();
+        fieldLokasi.setBounds(120, 20, 200, 20);
+        frame.add(fieldLokasi);
+
+        JButton buttonCari = new JButton("Cari");
+        buttonCari.setBounds(20, 50, 100, 20);
+        buttonCari.addActionListener(e -> {
+            String lokasi = fieldLokasi.getText();
             List<Jadwal> jadwalList = jadwalController.cariJadwal(lokasi);
-            if (jadwalList != null && !jadwalList.isEmpty()) {
-                StringBuilder jadwalDisplay = new StringBuilder("Daftar Jadwal:\n");
-                for (Jadwal jadwal : jadwalList) {
-                    jadwalDisplay.append(jadwal.getTanggalJadwal()).append(" - ")
-                                 .append(jadwal.getJamJadwal()).append(" - ")
-                                 .append(jadwal.getAlamatJadwal()).append("\n");
-                }
-                dialogUI.show(jadwalDisplay.toString());
-            } else {
-                dialogUI.show("Lokasi tidak terdeteksi");
+            if (jadwalList != null) {
+                dialogUI.tampilkanPesan("Jumlah jadwal: " + jadwalList.size());
             }
-        } else {
-            dialogUI.show("Lokasi tidak boleh kosong");
-        }
+        });
+        frame.add(buttonCari);
+
+        frame.setVisible(true);
     }
 }

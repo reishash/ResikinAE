@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JadwalProvider {
+    Jadwal[] jadwalList = {
+        
+    };
+    
+    
     public List<Jadwal> getJadwalByLokasi(String lokasi) {
         // Simulasi pencarian data dari database berdasarkan lokasi
         List<Jadwal> jadwalList = new ArrayList<>();

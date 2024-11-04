@@ -5,8 +5,6 @@ import src.main.java.com.models.Profil;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class HalamanProfil extends JFrame {
     private ProfilController controller;
@@ -25,7 +23,12 @@ public class HalamanProfil extends JFrame {
         labelAlamat = new JLabel("Alamat: ");
         btnEditProfil = new JButton("Edit Profil");
 
-        btnEditProfil.addActionListener(e -> controller.showEditProfil());
+        btnEditProfil.addActionListener(e -> {
+            controller.showEditProfil();
+            // Use the controller to fetch and display the profile
+            Profil profil = controller.getProfil();
+            displayProfil(profil);
+        });
 
         add(labelNama);
         add(labelEmail);

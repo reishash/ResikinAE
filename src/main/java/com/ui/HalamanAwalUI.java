@@ -6,14 +6,12 @@ import src.main.java.com.controllers.LokasiController;
 
 public class HalamanAwalUI {
 
-    public HalamanAwalUI(LoginController loginController, JadwalController jadwalController,
-            LokasiController lokasiController) {
-        //TODO Auto-generated constructor stub
+    public HalamanAwalUI(LoginController loginController, JadwalController jadwalController, LokasiController lokasiController) {   
+
     }
 
     public void tampilkan() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'tampilkan'");
+        
     }
     
 }
