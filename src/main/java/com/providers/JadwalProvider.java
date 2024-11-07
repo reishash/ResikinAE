@@ -4,7 +4,6 @@ import src.main.java.com.models.Jadwal;
 import java.util.List;
 
 public class JadwalProvider {
-    private JadwalProvider jadwalProvider = new JadwalProvider();
 
     public List<Jadwal> getJadwalByLokasi(String lokasi) {
         // Implementasi untuk mengambil data jadwal dari database
@@ -12,7 +11,7 @@ public class JadwalProvider {
     }
 
     public Jadwal[] selectJadwal(String lokasi) throws Exception {
-        List<Jadwal> jadwalList = jadwalProvider.getJadwalByLokasi(lokasi);
+        List<Jadwal> jadwalList = getJadwalByLokasi(lokasi);
         return jadwalList.toArray(new Jadwal[0]);
     }
 }
