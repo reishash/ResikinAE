@@ -29,4 +29,9 @@ public class ProfilController {
         userProvider.updateProfil(updatedProfil);
         loadProfil(updatedProfil.getId_profil());
     }
+
+    public Profil getProfil(int userId) {
+        Profil profil = userProvider.getProfilByUserId(userId);
+        return new Profil(profil.getId_profil(), profil.getNama_lengkap(), profil.getEmail(), profil.getNomor_telepon(), profil.getAlamat(), profil.getStatistik_kontribusi());
+    }
 }

@@ -13,15 +13,16 @@ public class HalamanEditProfil extends JFrame {
 
     public HalamanEditProfil(ProfilController controller) {
         this.controller = controller;
-        Profil profil = controller.getProfil();
-        txtNama.setText(profil.getNama_lengkap());
-        txtEmail.setText(profil.getEmail());
-        txtNomor.setText(profil.getNomor_telepon());
-        txtAlamat.setText(profil.getAlamat());
-        this.controller = controller;
+        initializeUI();
+        populateFields();
+        addEventHandlers();
+    }
+
+    private void initializeUI() {
         setTitle("Edit Profil");
         setSize(400, 300);
         setLayout(new GridLayout(5, 2));
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         txtNama = new JTextField();
         txtEmail = new JTextField();
@@ -29,6 +30,26 @@ public class HalamanEditProfil extends JFrame {
         txtAlamat = new JTextField();
         btnSave = new JButton("Simpan");
 
+        add(new JLabel("Nama Lengkap:"));
+        add(txtNama);
+        add(new JLabel("Email:"));
+        add(txtEmail);
+        add(new JLabel("Nomor Telepon:"));
+        add(txtNomor);
+        add(new JLabel("Alamat:"));
+        add(txtAlamat);
+        add(btnSave);
+    }
+
+    private void populateFields() {
+        Profil profil = controller.getProfil(id);
+        txtNama.setText(profil.getNama_lengkap());
+        txtEmail.setText(profil.getEmail());
+        txtNomor.setText(profil.getNomor_telepon());
+        txtAlamat.setText(profil.getAlamat());
+    }
+
+    private void addEventHandlers() {
         btnSave.addActionListener(e -> {
             Profil updatedProfil = new Profil(
                     1,
@@ -41,18 +62,6 @@ public class HalamanEditProfil extends JFrame {
             controller.updateProfil(updatedProfil);
             this.setVisible(false);
         });
-
-        add(new JLabel("Nama Lengkap:"));
-        add(txtNama);
-        add(new JLabel("Email:"));
-        add(txtEmail);
-        add(new JLabel("Nomor Telepon:"));
-        add(txtNomor);
-        add(new JLabel("Alamat:"));
-        add(txtAlamat);
-        add(btnSave);
-
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public void displayForm() {
