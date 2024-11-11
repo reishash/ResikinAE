@@ -8,11 +8,13 @@ import java.awt.*;
 
 public class HalamanEditProfil extends JFrame {
     private ProfilController controller;
+    private int id;
     private JTextField txtNama, txtEmail, txtNomor, txtAlamat;
     private JButton btnSave;
 
-    public HalamanEditProfil(ProfilController controller) {
+    public HalamanEditProfil(ProfilController controller, int id) {
         this.controller = controller;
+        this.id = id;
         initializeUI();
         populateFields();
         addEventHandlers();
@@ -43,16 +45,20 @@ public class HalamanEditProfil extends JFrame {
 
     private void populateFields() {
         Profil profil = controller.getProfil(id);
-        txtNama.setText(profil.getNama_lengkap());
-        txtEmail.setText(profil.getEmail());
-        txtNomor.setText(profil.getNomor_telepon());
-        txtAlamat.setText(profil.getAlamat());
+        if (profil != null) { // Pastikan profil tidak null
+            txtNama.setText(profil.getNama_lengkap());
+            txtEmail.setText(profil.getEmail());
+            txtNomor.setText(profil.getNomor_telepon());
+            txtAlamat.setText(profil.getAlamat());
+        } else {
+            JOptionPane.showMessageDialog(this, "Profil tidak ditemukan", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void addEventHandlers() {
         btnSave.addActionListener(e -> {
             Profil updatedProfil = new Profil(
-                    1,
+                    id,
                     txtNama.getText(),
                     txtEmail.getText(),
                     txtNomor.getText(),
